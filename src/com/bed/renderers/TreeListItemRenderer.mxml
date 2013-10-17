@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				xmlns:s="library://ns.adobe.com/flex/spark" 
+				xmlns:mx="library://ns.adobe.com/flex/mx" 
+				autoDrawBackground="true">
+	
+	<fx:Script>
+		<![CDATA[
+			import com.bed.components.Tree;
+			import com.bed.supportClasses.TreeItem;
+			
+			import mx.collections.ArrayCollection;
+			
+			override public function set data(value:Object):void { 
+				super.data = value;
+				
+				var ti:TreeItem = value as TreeItem;
+				
+				trace(currentState);
+			} 
+			
+			protected function leaf_clickHandler(event:MouseEvent):void
+			{
+				trace(currentState);
+				var ti:TreeItem = data as TreeItem;
+
+				var dp:ArrayCollection = (this.parent.parent.parent.parent.parent as Tree).dataProvider as ArrayCollection;
+				Tree.toggleChildren(dp, ti);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="hovered" />
+		<s:State name="selected" />
+		<s:State name="dragging" />
+		<s:State name="normalAndShowCaret" />
+		<s:State name="hoveredAndShowCaret" />
+		<s:State name="selectedAndShowCaret" />
+	</s:states>
+	
+	<s:HGroup paddingLeft="{data.rank * 10}" width="100%" verticalAlign="middle" gap="0">
+		<s:HGroup visible="{data.isParent}" id="leaf" y="-5" width="22.235" height="22.235" horizontalAlign="center" verticalAlign="middle" click="leaf_clickHandler(event)">
+			<s:Path id="rotator" rotation="0" data="M 4 4 L 12 4 L 8 12 L 4 4 Z">
+				<s:fill>
+					<s:SolidColor color="0xAAAAAA" alpha="1" />
+				</s:fill>
+			</s:Path>
+		</s:HGroup>
+		<s:Label text="{data.name}" fontWeight="normal"/>
+	</s:HGroup>
+	
+</s:ItemRenderer>

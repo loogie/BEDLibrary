@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="com.bed.skins.ChildLeafSkin"/>
+    <classEntry path="com.bed.components.TreeItem"/>
+    <classEntry path="com.bed.skins.ParentTreeItemSkin"/>
+    <classEntry path="com.bed.components.IconToggleButton"/>
+    <classEntry path="com.bed.components.ImageToggleButton"/>
+    <classEntry path="com.bed.supportClasses.TreeItem"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
